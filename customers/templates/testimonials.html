@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url({% static 'img/page-title-bg.webp' %});">
+      <div class="container position-relative">
+        <h1>Testimonials</h1>
+
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li class="current">Testimonials</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+<!-- Testimonials Section -->
+    <section class="testimonials-12 testimonials section" id="testimonials">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>What Our Clients Say</h2>
+<p>See how our services have made a difference in the lives of our valued customers.</p>
+
+      </div><!-- End Section Title -->
+
+      <div class="testimonial-wrap">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mb-4 mb-md-4">
+              <div class="testimonial">
+                <img src="{% static 'img/testimonials/testimonials-1.jpg' %}" alt="Testimonial author">
+                <blockquote>
+                  <p>
+  “Working with this team has been a game changer. Their dedication and expertise have transformed our approach to farming, and the results speak for themselves. We’ve seen significant improvements in our yields, and their guidance has been invaluable.”
+</p>
+
+                </blockquote>
+                <p class="client-name">James Smith</p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4 mb-md-4">
+              <div class="testimonial">
+                <img src="{% static 'img/testimonials/testimonials-2.jpg' %}" alt="Testimonial author">
+                <blockquote>
+                   <p>
+  "This service has been incredibly helpful in transforming our farming practices. The team's expertise and dedication have made a real difference in our productivity. We are now more efficient and sustainable than ever!"
+</p>
+
+                </blockquote>
+                <p class="client-name">Kate Smith</p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4 mb-md-4">
+              <div class="testimonial">
+                <img src="{% static 'img/testimonials/testimonials-3.jpg' %}" alt="Testimonial author">
+                <blockquote>
+                  <p>
+  "This service has been a game-changer for us! The team's expertise in sustainable farming practices has helped us increase our yields and improve the quality of our crops. We couldn't be more pleased with the results!"
+</p>
+
+                </blockquote>
+                <p class="client-name">Claire Anderson</p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4 mb-md-4">
+              <div class="testimonial">
+                <img src="{% static 'img/testimonials/testimonials-4.jpg' %}" alt="Testimonial author">
+                <blockquote>
+<p>
+  "Working with this team has been an incredible experience. Their dedication and expertise have made a significant difference in our project. We are extremely grateful for the positive impact they’ve had!"
+</p>
+
+                </blockquote>
+                <p class="client-name">Dan Smith</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Testimonials Section -->
+
+
+      <style>
+          /* Testimonials Section */
+.testimonials-12 {
+    background: #0f5132;
+    padding: 60px 0;
+}
+
+.testimonials-12 .section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #dfe0e1;
+}
+
+.testimonials-12 .section-title p {
+    font-size: 1rem;
+    text-align: center;
+    color: #ffc720;
+    margin-bottom: 40px;
+}
+
+.testimonial-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.testimonial {
+    background: #0a58ca;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #eaeaea;
+}
+
+.testimonial blockquote {
+    font-size: 1rem;
+    font-style: italic;
+    color: #555;
+    margin: 0 0 15px;
+    line-height: 1.6;
+}
+
+.testimonial .client-name {
+    font-weight: 700;
+    color: #dfe0e1;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .testimonials-12 {
+        padding: 40px 0;
+    }
+
+    .testimonial {
+        margin-bottom: 20px;
+    }
+
+    .testimonial-wrap {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .testimonials-12 .section-title h2 {
+        font-size: 2rem;
+    }
+
+    .testimonials-12 .section-title p {
+        font-size: 0.9rem;
+    }
+
+    .testimonial img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .testimonial blockquote {
+        font-size: 0.9rem;
+    }
+}
+
+      </style>
+  </main>
+
+{% endblock %}

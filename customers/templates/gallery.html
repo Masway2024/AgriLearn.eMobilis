@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- Page Title -->
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url({% static 'img/page-title-bg.webp' %});">
+      <div class="container position-relative">
+        <h1>Gallery</h1>
+
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li class="current">Gallery</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+<div class="services-carousel-wrap">
+  <div class="container">
+    <div class="swiper init-swiper">
+      <!-- Swiper Configuration (This could be external JS if necessary) -->
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": {
+            "delay": 5000
+          },
+          "slidesPerView": "auto",
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          },
+          "navigation": {
+            "nextEl": ".js-custom-next",
+            "prevEl": ".js-custom-prev"
+          },
+          "breakpoints": {
+            "320": {
+              "slidesPerView": 1,
+              "spaceBetween": 40
+            },
+            "1200": {
+              "slidesPerView": 3,
+              "spaceBetween": 40
+            }
+          }
+        }
+      </script>
+
+      <!-- Navigation Buttons -->
+      <button class="navigation-prev js-custom-prev">
+        <i class="bi bi-arrow-left-short"></i>
+      </button>
+      <button class="navigation-next js-custom-next">
+        <i class="bi bi-arrow-right-short"></i>
+      </button>
+<!-- Swiper Slides -->
+<div class="swiper-wrapper">
+
+    {% for item in service_items %}
+    <div class="swiper-slide">
+        <div class="service-item">
+            <div class="service-item-contents">
+                <a href="{{ item.link|default:'#' }}">
+                    <span class="service-item-category">{{ item.category }}</span>
+                    <h2 class="service-item-title">{{ item.title }}</h2>
+                </a>
+            </div>
+            <img src="{{ item.image.url }}" alt="{{ item.title }}" class="img-fluid">
+        </div>
+    </div>
+    {% endfor %}
+
+</div><!-- End Swiper Wrapper -->
+
+    </div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div><!-- End Gallery Section -->
+
+<!-- Add Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  // Initialize Swiper
+  document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.swiper', {
+      loop: true,
+      speed: 600,
+      autoplay: {
+        delay: 5000
+      },
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.js-custom-next',
+        prevEl: '.js-custom-prev'
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 40
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 40
+        }
+      }
+    });
+  });
+
+  // Initialize Swiper
+  document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.init-swiper', {
+      loop: true,
+      speed: 600,
+      autoplay: {
+        delay: 5000
+      },
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.js-custom-next',
+        prevEl: '.js-custom-prev'
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 40
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 40
+        }
+      }
+    });
+  });
+
+</script>
+<!-- Add Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<style>
+    /* Gallery Section Styling */
+.container.section-title {
+  text-align: center;
+  padding: 100px 50px;
+  position: relative;
+  background-color: #f8f9fa; /* Fallback background color */
+  background-image: url({% static 'img/page-title-bg.webp' %}); /* Path to your image */
+  background-size: cover; /* Make sure the image covers the entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+
+}
+
+.container.section-title h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: #fcfcfd;
+}
+
+.container.section-title p {
+  font-size: 16px;
+  color: #0dcaf0;
+}
+
+/* Swiper Container Background Color */
+.services-carousel-wrap {
+  position: relative;
+  padding: 20px 0;
+  background-color: #0f5132; /* Light background color */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 20px;
+}
+
+.service-item {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #fd7e14;
+}
+
+.service-item-contents {
+  padding: 20px;
+}
+
+.service-item-contents a {
+  text-decoration: none;
+  color: #333;
+}
+
+.service-item-category {
+  font-size: 14px;
+  color: #7d7d7d;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.service-item-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.service-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Swiper Navigation Button Styling */
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #0a58ca; /* Dark button background */
+  color: #084298;
+  padding: 12px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10; /* Ensure buttons are always above content */
+  transition: background-color 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #0a58ca; /* Darker on hover */
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+/* Pagination Styling */
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #999;
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: background-color 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #007bff; /* Active pagination bullet color */
+}
+
+/* Responsive Design */
+@media (max-width: 1199px) {
+  .swiper-slide {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .container.section-title h2 {
+    font-size: 28px;
+  }
+}
+
+</style>
+
+{% endblock %}

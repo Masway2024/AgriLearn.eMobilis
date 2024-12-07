@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{% block title %}Agrilearn {% endblock %}</title>
+         {% load static %}
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/logo.png' %}" rel="icon">
+  <link href="{% static 'img/logo.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Marcellus:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+
+  <!-- Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+
+</head>
+<body class="index-page">
+{% block navbar %}
+  <!-- Header -->
+
+  <header id="header" class="header d-flex align-items-center position-relative">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="{% url 'index' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'img/logo.png' %}" alt="AgriCulture">
+      </a>
+
+     <nav id="navmenu" class="navmenu">
+  <ul>
+    <li><a href="{% url 'index' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+    <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">About Us</a></li>
+    <li><a href="{% url 'services' %}" class="{% if request.path == '/resume/' %}active{% endif %}">Our Services</a></li>
+    <li><a href="{% url 'testimonials' %}" class="{% if request.path == '/services/' %}active{% endif %}">Testimonials</a></li>
+    <li><a href="{% url 'blog' %}" class="{% if request.path == '/blog/' %}active{% endif %}">Our Blogs</a></li>
+    <li><a href="{% url 'video' %}" class="{% if request.path == '/video/' %}active{% endif %}">Video</a></li>
+     <li><a href="{% url 'gallery' %}" class="{% if request.path == '/gallery/' %}active{% endif %}">Gallery</a></li>
+    <li><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a></li>
+  </ul>
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+
+    </div>
+  </header>
+{% endblock %}
+
+<style>
+  /* Navbar background color */
+.header {
+  background-color: white; /* Dark green background */
+}
+
+/* Navbar link styles */
+.navmenu ul li a {
+  color: darkblue;           /* Default link color */
+  padding: 10px 15px;     /* Add padding for better spacing */
+  text-decoration: none;  /* Remove underline */
+  transition: color 0.3s, background-color 0.3s; /* Smooth transition */
+}
+
+/* Active link styling */
+.navmenu ul li a.active {
+  background-color: #FFC107; /* Highlight color (yellow) */
+  color: orangered;            /* Text color for active link */
+  border-radius: 5px;         /* Optional: Rounded corners */
+}
+
+/* Hover effect for links */
+.navmenu ul li a:hover {
+  background-color: darkgreen; /* Slight white overlay on hover */
+  border-radius: 5px;
+}
+
+/* Mobile menu icon color */
+.mobile-nav-toggle {
+  color: white; /* Ensure mobile toggle is visible */
+}
+
+</style>
+
+  <!-- Main Content -->
+  <main class="main">
+    {% block content %}
+
+    {% endblock %}
+  </main>
+<footer id="footer" class="footer dark-background">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="{% url 'index' %}" class="logo d-flex align-items-center">
+              <span class="sitename">AgriCulture</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>A108 Moi Avenue</p>
+              <p>NAIROBI,KENYA</p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+254112874286</span></p>
+              <p><strong>Email:</strong> <span>infoevents724@gmail.com</span></p>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'about' %}">About us</a></li>
+              <li><a href="{% url 'services' %}">Services</a></li>
+              <li><a href="{% url 'terms' %}">Terms of service</a></li>
+              <li><a href="{% url 'privacy' %}">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <!-- Other sections remain unchanged -->
+<div class="col-lg-2 col-md-3 footer-links">
+  <h4>Our Agricultural Services</h4>
+  <ul>
+    <li><a href="#">Crop Consultation</a></li>
+    <li><a href="#">Farm Management</a></li>
+    <li><a href="#">Sustainable Farming</a></li>
+    <li><a href="#">Agricultural Equipment</a></li>
+    <li><a href="#">Irrigation Solutions</a></li>
+  </ul>
+</div>
+
+<div class="col-lg-2 col-md-3 footer-links">
+  <h4>Additional Resources</h4>
+  <ul>
+    <li><a href="#">Soil Health</a></li>
+    <li><a href="#">Pest Control</a></li>
+    <li><a href="#">Fertilizers</a></li>
+    <li><a href="#">Agricultural Research</a></li>
+    <li><a href="#">Farm to Table</a></li>
+  </ul>
+</div>
+
+
+
+    <div class="copyright text-center">
+      <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+        <div class="d-flex flex-column align-items-center align-items-lg-start">
+          <div>
+            © Copyright <strong><span>AgriLearn</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+            Designed by <a href="https://bootstrapmade.com/">Vincent Masway</a>
+          </div>
+        </div>
+
+        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+          <a href="https://x.com/Kimaswai_J"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://www.facebook.com/kimaswai.junior"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.facebook.com/kimaswai.junior"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/brand-vincent-kiplangat-376b21295/"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+</footer>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/aos/aos.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+    <!-- Bootstrap JS (Optional, for interactive components) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Main JS File -->
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Page Title -->
+<div class="page-title dark-background" data-aos="fade" style="background-image: url({% static 'img/page-title-bg.webp' %});">
+  <div class="container position-relative">
+    <h1>Our Videos</h1>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li class="current">Our Videos</li>
+      </ol>
+    </nav>
+  </div>
+</div><!-- End Page Title -->
+<div class="gallery">
+        {% for video in videos %}
+            <div class="gallery-item">
+                <iframe src="{{ video.youtube_url }}"
+                        title="{{ video.title }}" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+        {% endfor %}
+    </div>
+
+<!-- Back to Homepage Link -->
+<br>
+<a href="{% url 'index' %}" class="btn btn-primary">Back to Homepage</a>
+
+<style>
+  /* Page Title */
+  .page-title {
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .page-title h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+  }
+
+  .breadcrumbs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .breadcrumbs ol {
+    display: inline-block;
+  }
+
+  .breadcrumbs li {
+    display: inline-block;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  .breadcrumbs li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumbs li a:hover {
+    color: #007bff;
+  }
+
+  /* Gallery Container */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 70px 0;
+    transition: grid-template-columns 0.3s ease;
+    background-color: green;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    background-color: #fff;
+    cursor: pointer;
+    border: 2px solid #eee;
+  }
+
+  /* Hover Effect for Videos */
+  .gallery-item:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  /* Hover Effect on iframe to make it slightly zoom in */
+  .gallery-item iframe {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  .gallery-item:hover iframe {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+
+  /* Responsive Iframes */
+  .gallery-item iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Animation for Gallery Items */
+  .gallery-item {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Back to Homepage Button */
+  .btn-primary {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 30px
+  }
+
+  .btn-primary:hover {
+    background-color: green;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Heading Styling */
+  h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    color: white;
+    text-transform: uppercase;
+  }
+
+  /* Mobile and Tablet Responsiveness */
+  @media (max-width: 1024px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    }
+
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px 0;
+      font-size: 1rem;
+    }
+  }
+
+  /* Enhanced Shadows and Depth */
+  .gallery-item {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .gallery-item:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Hover Animation */
+  .gallery-item:hover iframe {
+    animation: zoomIn 0.3s ease-in-out;
+  }
+
+  @keyframes zoomIn {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
+
+  /* Smooth scroll for back-to-home button */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+
+<!-- Using Django's static tag to fetch JavaScript -->
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+{% endblock %}
